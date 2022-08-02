@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-final fmt = NumberFormat('#,###');
+final fmt = NumberFormat.decimalPattern();
 final compactFmt = NumberFormat.compact();
 
 extension IntX on int {
