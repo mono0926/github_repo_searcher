@@ -17,6 +17,7 @@ class RepoTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final l10n = context.l10n;
     return SafeArea(
       child: InkWell(
         onTap: () {
@@ -59,7 +60,7 @@ class RepoTile extends ConsumerWidget {
                         _TagLabel(
                           iconBackgroundColor: theme.appColors.starIconSurface,
                           iconData: Icons.star,
-                          value: repo.stargazersCount.compact,
+                          value: l10n.compactCount(repo.stargazersCount),
                         ),
                       ],
                     ),

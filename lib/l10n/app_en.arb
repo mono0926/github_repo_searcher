@@ -19,6 +19,15 @@
             }
         }
     },
+    "compactCount": "{count}",
+    "@compactCount": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compact"
+            }
+        }
+    },
     "repositoryNotFound": "Repository Not Found",
     "appTheme": "App Theme",
     "systemTheme": "System",

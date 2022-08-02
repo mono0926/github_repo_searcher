@@ -45,6 +45,7 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final appColors = theme.appColors;
+    final l10n = context.l10n;
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
@@ -75,25 +76,25 @@ class _Body extends StatelessWidget {
             iconData: Icons.star_outline,
             iconBackgroundColor: appColors.starIconSurface,
             title: context.l10n.star,
-            value: repo.stargazersCount.compact,
+            value: l10n.compactCount(repo.stargazersCount),
           ),
           _Row(
             iconData: Icons.visibility_outlined,
             iconBackgroundColor: appColors.watcherIconSurface,
             title: context.l10n.watcher,
-            value: repo.watchersCount.compact,
+            value: l10n.compactCount(repo.watchersCount),
           ),
           _Row(
             iconData: Icons.fork_right_outlined,
             iconBackgroundColor: appColors.forkIconSurface,
             title: context.l10n.fork,
-            value: repo.forksCount.compact,
+            value: l10n.compactCount(repo.forksCount),
           ),
           _Row(
             iconData: Icons.info_outline,
             iconBackgroundColor: appColors.infoIconSurface,
             title: context.l10n.issue,
-            value: repo.openIssuesCount.compact,
+            value: l10n.compactCount(repo.openIssuesCount),
           ),
         ].intersperse(const Gap(16)),
       ],
