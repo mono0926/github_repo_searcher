@@ -13,7 +13,9 @@
     "searchTotalCountResult": "Total {totalCount}",
     "@searchTotalCountResult": {
         "placeholders": {
-            "totalCount": {}
+            "totalCount": {
+                "type": "int"
+            }
         }
     },
     "repositoryNotFound": "Repository Not Found",
