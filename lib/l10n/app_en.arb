@@ -14,7 +14,8 @@
     "@searchTotalCountResult": {
         "placeholders": {
             "totalCount": {
-                "type": "int"
+                "type": "int",
+                "format": "decimalPattern"
             }
         }
     },
