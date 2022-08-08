@@ -19,15 +19,9 @@ final searchRepoPagingProvider =
       );
 });
 
-final repoTotalCountProvider = Provider<AsyncValue<int>>((ref) {
-  // MEMO(tsuruoka): 検索クエリを入れ替えても`whenData`のisLoadingは常にfalseとなるので分岐を追加
-  final repo = ref.watch(searchRepoPagingProvider(1));
-  return repo.isLoading
-      ? const AsyncLoading()
-      : repo.whenData(
-          (paging) => paging.totalCount,
-        );
-});
+final repoTotalCountProvider = Provider<int?>(
+  (ref) => ref.watch(searchRepoPagingProvider(1)).value?.totalCount,
+);
 
 final currentRepoProvider = Provider<AsyncValue<Repo>>(
   (ref) => throw UnimplementedError(),
