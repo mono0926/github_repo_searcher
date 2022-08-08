@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:github_repo_searcher/common/common.dart';
+import 'package:github_repo_searcher/services/paging/model/paging.dart';
 
+import 'model/repo.dart';
 import 'repo_search_bar/repo_search_bar.dart';
 import 'repo_search_provider.dart';
 import 'widget/repo_not_found.dart';
@@ -13,6 +15,7 @@ class RepoSearchPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final firstPagingProvider = searchRepoPagingProvider(1);
     const horizontalPadding = 16.0;
     return Column(
       children: [
@@ -27,10 +30,11 @@ class RepoSearchPage extends ConsumerWidget {
         ),
         const Divider(),
         Expanded(
-          child: AsyncValueBuilder<int>(
-            value: ref.watch(repoTotalCountProvider),
-            onRefresh: () => ref.refresh(searchRepoPagingProvider(1).future),
-            builder: (totalCount) {
+          child: AsyncValueBuilder<Paging<Repo>>(
+            value: ref.watch(firstPagingProvider),
+            onRefresh: () => ref.refresh(firstPagingProvider.future),
+            builder: (paging) {
+              final totalCount = paging.totalCount;
               return Column(
                 children: [
                   Align(
